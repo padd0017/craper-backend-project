@@ -64,6 +64,11 @@ const crapSchema = new Schema(
             images: {
             type: [String],
             required: true
+            ,
+            validate:{
+                validator:images=>images.length!==0,
+                message:prop=>`invallid images length`
+            }
     },
     status: {
         type: String,

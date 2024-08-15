@@ -41,7 +41,7 @@ debug({Query: query})
 nearbyPlaces.filter((item) => {
     debug({filtered:  item.status, item})
     if (show_taken === "true") {
-    if(item.status ===  "AVAILABLE") FilteredArray.push(item)
+    if(item.status !==  "FLUSHED") FilteredArray.push(item)
     } else {
    if(item.status === "AVAILABLE") FilteredArray.push(item)
     }
@@ -70,13 +70,13 @@ nearbyPlaces.filter((item) => {
 };
 
 const getOne = async(Id, userId)=>{
-        const crap = await  Crap.findById(Id).populate("owner", "name ").populate("buyer", "_id");
+        const crap = await  Crap.findById(Id).populate("owner", "name ").populate("buyer", "_id name");
 
         if (!crap) {
           throw new NotFoundError(`crap with id ${Id} not found`);
         }
 
-        if(!crap.owner?._id.toString() == userId || !crap.buyer?._id.toString() == userId){
+        if(!crap.owner?._id.toString() == userId.toString() || !crap.buyer?._id.toString() == userId.toString()){
           crap.buyer = undefined
           crap.location = undefined
           crap.suggestion = undefined
@@ -110,7 +110,8 @@ const interested = async(userId, Id)=>{
 
  
 
-  return await crap.save()
+  await crap.save()
+  return crap;
 }
 
 const suggest = async(input, Id, userId)=>{
