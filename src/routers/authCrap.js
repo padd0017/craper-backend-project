@@ -16,7 +16,7 @@ authRouter.post(
   }),
   function (req, res) {
     const token = generateToken(req.user);
-    res.redirect(`/login-success?token=${token}`);
+    res.redirect(`http://localhost:3000/?token=${token}`);
   }
 );
 
@@ -52,7 +52,7 @@ authRouter.get(
       ? JSON.parse(Buffer.from(state, 'base64').toString())
       : {};
 
-    const baseUrl = redirect_url ?? '/login-success';
+    const baseUrl = redirect_url ?? 'http://localhost:3000/';
     ``;
 
     const token = generateToken(req.user);

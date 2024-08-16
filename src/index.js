@@ -24,7 +24,7 @@ app.get("/", (_req, res) => {
     res.send("Server running ⛳️⛳️⛳️");
 });
 
-app.get('/login-success', (req, res) => {
+app.get('http://localhost:3000/', (req, res) => {
     res.send(`Your token is ${req.query.token}`);
 }); 
 
