@@ -16,7 +16,7 @@ authRouter.post(
   }),
   function (req, res) {
     const token = generateToken(req.user);
-    res.redirect(`http://localhost:3000/?token=${token}`);
+    res.redirect(`https://final-project-rho-blond.vercel.app/?token=${token}`);
   }
 );
 
@@ -52,7 +52,7 @@ authRouter.get(
       ? JSON.parse(Buffer.from(state, 'base64').toString())
       : {};
 
-    const baseUrl = redirect_url ?? 'http://localhost:3000/';
+    const baseUrl = redirect_url ?? 'https://final-project-rho-blond.vercel.app/';
     ``;
 
     const token = generateToken(req.user);

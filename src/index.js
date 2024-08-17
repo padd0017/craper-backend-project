@@ -24,7 +24,7 @@ app.get("/", (_req, res) => {
     res.send("Server running ⛳️⛳️⛳️");
 });
 
-app.get('http://localhost:3000/', (req, res) => {
+app.get('https://final-project-rho-blond.vercel.app/', (req, res) => {
     res.send(`Your token is ${req.query.token}`);
 }); 
 
